@@ -36,6 +36,11 @@ setup(name='maskprocessor',
                   'which inspired by hashcat maskprocessor',
       long_description_content_type='text/markdown',
       long_description=readme(),
+      entry_points={
+          'console_scripts': [
+              'maskprocessor = maskprocessor.__init__:main',
+          ]
+      },
       classifiers=[
           'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: MIT License',

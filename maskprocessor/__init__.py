@@ -75,7 +75,7 @@ def maskprocessor(mask):
         yield ''.join(result)
 
 
-if __name__ == '__main__':
+def main():
     import argparse
     from textwrap import dedent
     parser = argparse.ArgumentParser(
@@ -99,6 +99,10 @@ if __name__ == '__main__':
 
     for i in maskprocessor(args.mask):
         print(i)
+
+
+if __name__ == '__main__':
+    main()
 
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab
