@@ -9,7 +9,7 @@ from distutils.core import setup
 
 import re
 VERSION_FILE = '_version.py'
-VERSION_REGEX = r'__version__ = ([\'"])([^\'"])+\1'
+VERSION_REGEX = r'__version__ = ([\'"])([^\'"]+)\1'
 with open(VERSION_FILE, 'rt') as version_file:
     try:
         VERSION = re.search(VERSION_REGEX, version_file.read()).group(2)
@@ -17,8 +17,12 @@ with open(VERSION_FILE, 'rt') as version_file:
         raise RuntimeError("version file '%s' cannot be found" % (VERSION_FILE,))
 
 
+def readme():
+    with open('README.md') as f:
+        return f.read()
+
+
 setup(name='maskprocessor',
-      packages=['maskprocessor'],
       author='Xvezda',
       author_email='xvezda@naver.com',
       license='MIT',
@@ -26,9 +30,11 @@ setup(name='maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
       version=VERSION,
       description='Python maskprocessor implemenetation '
-                  'inspired by hashcat maskprocessor',
+                  'which inspired by hashcat maskprocessor',
+      long_description=readme(),
+      long_description_content_type='text/markdown',
       classifiers=[
-          'Development Status :: 1 - Planning',
+          'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: MIT License',
           'Topic :: Utilities',
           'Topic :: Security :: Cryptography',
