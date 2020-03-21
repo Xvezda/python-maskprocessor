@@ -31,7 +31,7 @@ setup(name='maskprocessor',
       url='https://github.com/Xvezda/python-maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
       version=VERSION,
-      packages=['maskprocessor'],
+      packages=setuptools.find_packages(),
       description='Python maskprocessor implemenetation '
                   'which inspired by hashcat maskprocessor',
       long_description_content_type='text/markdown',
