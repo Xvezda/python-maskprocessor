@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # Copyright (c) 2020 Xvezda <xvezda@naver.com>
 #
 # Use of this source code is governed by an MIT-style
@@ -8,7 +10,7 @@ from distutils.core import setup
 
 
 import re
-VERSION_FILE = '_version.py'
+VERSION_FILE = 'maskprocessor/_version.py'
 VERSION_REGEX = r'__version__ = ([\'"])([^\'"]+)\1'
 with open(VERSION_FILE, 'rt') as version_file:
     try:
@@ -29,6 +31,8 @@ setup(name='maskprocessor',
       url='https://github.com/Xvezda/python-maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
       version=VERSION,
+      packages=['maskprocessor'],
+      zip_safe=False,
       description='Python maskprocessor implemenetation '
                   'which inspired by hashcat maskprocessor',
       long_description=readme(),
