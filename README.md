@@ -13,6 +13,36 @@ Installation
 pip install maskprocessor
 ```
 
+Usage
+-----
+
+Via command line
+```sh
+$ maskprocessor '?d'
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+Import as python module
+
+```python
+from maskprocessor import maskprocessor as maskproc
+
+
+g = maskproc('?l')
+
+print(next(g))  # a
+print(next(g))  # b
+```
+
 
 License
 -------
