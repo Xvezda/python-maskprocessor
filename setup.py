@@ -6,7 +6,7 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT.
 
-from distutils.core import setup
+from setuptools import setup
 
 
 import re
@@ -32,11 +32,10 @@ setup(name='maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
       version=VERSION,
       packages=['maskprocessor'],
-      zip_safe=False,
       description='Python maskprocessor implemenetation '
                   'which inspired by hashcat maskprocessor',
-      long_description=readme(),
       long_description_content_type='text/markdown',
+      long_description=readme(),
       classifiers=[
           'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: MIT License',
@@ -54,4 +53,5 @@ setup(name='maskprocessor',
       project_urls={
         'Repository': 'https://github.com/Xvezda/python-maskprocessor',
         'Bug Reports': 'https://github.com/Xvezda/python-maskprocessor/issues',
-      })
+      },
+      zip_safe=False)
