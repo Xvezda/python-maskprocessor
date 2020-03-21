@@ -6,7 +6,7 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT.
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 import re
@@ -31,7 +31,7 @@ setup(name='maskprocessor',
       url='https://github.com/Xvezda/python-maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
       version=VERSION,
-      packages=setuptools.find_packages(),
+      packages=find_packages(),
       description='Python maskprocessor implemenetation '
                   'which inspired by hashcat maskprocessor',
       long_description_content_type='text/markdown',
