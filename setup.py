@@ -32,7 +32,7 @@ setup(name='maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
       version=VERSION,
       packages=find_packages(),
-      description='Python maskprocessor implemenetation '
+      description='Python maskprocessor implementation '
                   'which inspired by hashcat maskprocessor',
       long_description_content_type='text/markdown',
       long_description=readme(),
