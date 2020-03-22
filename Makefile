@@ -2,10 +2,11 @@ PY2 = python
 PY = $(PY2)
 PY3 = python3
 TWINE = twine
+SED = sed -E
 PACKAGE_NAME = maskprocessor
 VERSION_FILE = $(PACKAGE_NAME)/_version.py
 PACKAGE_VERSION = $(shell \
-	sed -E "s/__version__ = [\"']([^\"']+)[\"']/\1/" $(VERSION_FILE))
+	$(SED) "s/__version__ = [\"']([^\"']+)[\"']/\1/" $(VERSION_FILE))
 DIST_DIR = dist
 DIST_FILES = $(wildcard $(DIST_DIR)/$(PACKAGE_NAME)-$(PACKAGE_VERSION)*)
 
@@ -26,6 +27,9 @@ check:
 
 publish: all check
 	$(TWINE) upload $(DIST_FILES)
+
+pkg_version:
+	@echo $(PACKAGE_VERSION)
 
 test:
 	echo $(DIST_FILES)
