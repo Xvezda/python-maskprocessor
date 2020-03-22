@@ -79,6 +79,7 @@ def main():
     import argparse
     from textwrap import dedent
     parser = argparse.ArgumentParser(
+        'maskprocessor',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=dedent('''\
             word generator with a per-position configureable charset'''),
