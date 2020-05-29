@@ -32,7 +32,8 @@ pkg_version:
 	@echo $(PACKAGE_VERSION)
 
 test:
-	echo $(DIST_FILES)
+	# echo $(DIST_FILES)
+	$(PY) -m $(PACKAGE_NAME) '?l'
 
 clean:
 	$(PY) setup.py clean

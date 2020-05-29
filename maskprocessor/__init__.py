@@ -24,12 +24,13 @@ def gen_charset(start, end):
 def maskprocessor(mask):
     """Mask processor generator
 
-    ?l = abcdefghijklmnopqrstuvwxyz
-    ?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ
-    ?d = 0123456789
-    ?s = «space»!"#$%&'()*+,-./:;<=>?@[]^_`{|}~
-    ?a = ?l?u?d?s
-    ?b = 0x00 - 0xff
+    Built-in charsets:
+        ?l = abcdefghijklmnopqrstuvwxyz
+        ?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+        ?d = 0123456789
+        ?s = «space»!"#$%&'()*+,-./:;<=>?@[]^_`{|}~
+        ?a = ?l?u?d?s
+        ?b = 0x00 - 0xff
     """
     charsets = []
     # Generate charsets
@@ -96,6 +97,11 @@ def main():
                         help='show version information',
                         action='version',
                         version=__version__)
+    # There are four commandline-parameters to configure four custom charsets.
+    parser.add_argument('--custom-charset1', '-1')
+    parser.add_argument('--custom-charset2', '-2')
+    parser.add_argument('--custom-charset3', '-3')
+    parser.add_argument('--custom-charset4', '-4')
     args = parser.parse_args()
 
     for i in maskprocessor(args.mask):
