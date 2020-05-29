@@ -34,6 +34,8 @@ pkg_version:
 test:
 	# echo $(DIST_FILES)
 	$(PY) -m $(PACKAGE_NAME) '?l'
+	# $(PY) -m $(PACKAGE_NAME) --custom-charset1='?l?d' '?1'
+	$(PY) -m $(PACKAGE_NAME) -1='?l?d' '?1'
 
 clean:
 	$(PY) setup.py clean
