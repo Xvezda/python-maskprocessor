@@ -36,6 +36,9 @@ test:
 	$(PY) -m $(PACKAGE_NAME) '?l'
 	# $(PY) -m $(PACKAGE_NAME) --custom-charset1='?l?d' '?1'
 	$(PY) -m $(PACKAGE_NAME) -1='?l?d' '?1'
+	$(PY) -m $(PACKAGE_NAME) 'password?d'
+	$(PY) -m $(PACKAGE_NAME) -1='?dabcdef' -2='?l?u' '?1?2'
+	$(PY) -m $(PACKAGE_NAME) -1='efghijklmnop' '?1?1?1'
 
 clean:
 	$(PY) setup.py clean

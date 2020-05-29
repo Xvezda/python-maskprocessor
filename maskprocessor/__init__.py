@@ -33,6 +33,7 @@ charset_4 = ''
 
 
 def expand(mask):
+    """Expand mask characters."""
     if not mask:
         return []
     charsets = []
@@ -82,7 +83,7 @@ def maskprocessor(mask,
                   custom_charset2=None,
                   custom_charset3=None,
                   custom_charset4=None):
-    """Mask processor generator
+    """Mask processor generator.
 
     Built-in charsets:
         ?l = abcdefghijklmnopqrstuvwxyz
@@ -91,6 +92,16 @@ def maskprocessor(mask,
         ?s = «space»!"#$%&'()*+,-./:;<=>?@[]^_`{|}~
         ?a = ?l?u?d?s
         ?b = 0x00 - 0xff
+
+    Args:
+        mask (str): String of mask characters.
+        custom_charset1 (:obj:`str`, optional): First custom charsets.
+        custom_charset2 (:obj:`str`, optional): Second custom charsets.
+        custom_charset3 (:obj:`str`, optional): Third custom charsets.
+        custom_charset4 (:obj:`str`, optional): Fourth custom charsets.
+
+    Yields:
+        str: Generated word.
     """
     charsets = []
 
@@ -114,25 +125,55 @@ def main():
         'maskprocessor',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=dedent('''\
-            word generator with a per-position configureable charset'''),
+            Word generator with a per-position configureable charset'''),
         epilog=dedent('''\
-            built-in charsets:
+            Built-in charsets:
               ?l = abcdefghijklmnopqrstuvwxyz
               ?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ
               ?d = 0123456789
               ?s =  !"#$&'()*+,-./:;<=>?@[\]^_`{|}~
               ?a = ?l?u?d?s
-              ?b = 0x00 - 0xff'''))
+              ?b = 0x00 - 0xff
+
+            Examples:
+              The following commands creates the following password candidates:
+                * command: ?l?l?l?l?l?l?l?l
+                  keyspace: aaaaaaaa - zzzzzzzz
+                * command: -1 ?l?d ?1?1?1?1?1
+                  keyspace: aaaaa - 99999
+                * command: password?d
+                  keyspace: password0 - password9
+                * command: -1 ?l?u ?1?l?l?l?l?l19?d?d
+                  keyspace: aaaaaa1900 - Zzzzzz1999
+                * command: -1 ?dabcdef -2 ?l?u ?1?1?2?2?2?2?2
+                  keyspace: 00aaaaa - ffZZZZZ
+                * command: -1 efghijklmnop ?1?1?1
+                  keyspace: eee - ppp
+
+            For more information, check out following URLs.
+                https://github.com/hashcat/maskprocessor#readme
+                https://github.com/Xvezda/python-maskprocessor#readme'''))
     parser.add_argument('mask', type=str)
     parser.add_argument('-V', '--version',
                         help='show version information',
                         action='version',
                         version=__version__)
-    # There are four commandline-parameters to configure four custom charsets.
-    parser.add_argument('--custom-charset1', '-1', type=str)
-    parser.add_argument('--custom-charset2', '-2', type=str)
-    parser.add_argument('--custom-charset3', '-3', type=str)
-    parser.add_argument('--custom-charset4', '-4', type=str)
+    custom_charset_group = parser.add_argument_group(
+        title='custom charsets arguments',
+        description='There are four commandline-parameters '
+                    'to configure four custom charsets.\n'
+                    'These commandline-parameters have four analogue '
+                    'shortcuts called -1, -2, -3 and -4. '
+                    'You can specify the chars directly on the command line.'
+    )
+    custom_charset_group.add_argument('--custom-charset1', '-1', type=str,
+                                      metavar='CS')
+    custom_charset_group.add_argument('--custom-charset2', '-2', type=str,
+                                      metavar='CS')
+    custom_charset_group.add_argument('--custom-charset3', '-3', type=str,
+                                      metavar='CS')
+    custom_charset_group.add_argument('--custom-charset4', '-4', type=str,
+                                      metavar='CS')
     args = parser.parse_args()
 
     for i in maskprocessor(args.mask,
