@@ -38,7 +38,7 @@ setup(name='maskprocessor',
       long_description=readme(),
       entry_points={
           'console_scripts': [
-              'maskprocessor = maskprocessor.__init__:main',
+              'maskprocessor = maskprocessor.core:main',
           ]
       },
       classifiers=[
