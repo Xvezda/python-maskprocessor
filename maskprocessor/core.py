@@ -6,7 +6,7 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT.
 
-from ._version import __version__
+from .__version__ import __version__
 
 import sys
 import string

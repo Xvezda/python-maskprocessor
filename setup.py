@@ -9,14 +9,8 @@
 from setuptools import setup, find_packages
 
 
-import re
-VERSION_FILE = 'maskprocessor/_version.py'
-VERSION_REGEX = r'__version__ = ([\'"])([^\'"]+)\1'
-with open(VERSION_FILE, 'rt') as version_file:
-    try:
-        VERSION = re.search(VERSION_REGEX, version_file.read()).group(2)
-    except IndexError:
-        raise RuntimeError("version file '%s' cannot be found" % (VERSION_FILE,))
+with open('maskprocessor/__version__.py') as f:
+    exec(f.read())
 
 
 def readme():
@@ -24,13 +18,13 @@ def readme():
         return f.read()
 
 
-setup(name='maskprocessor',
+setup(name=__title__,
       author='Xvezda',
       author_email='xvezda@naver.com',
       license='MIT',
       url='https://github.com/Xvezda/python-maskprocessor',
       keywords=['hash', 'hashcat', 'maskprocessor', 'bruteforce'],
-      version=VERSION,
+      version=__version__,
       packages=find_packages(),
       description='Python maskprocessor implementation '
                   'which inspired by hashcat maskprocessor',
