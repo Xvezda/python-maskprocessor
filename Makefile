@@ -2,11 +2,11 @@ PY2 = python
 PY = $(PY2)
 PY3 = python3
 TWINE = twine
-SED = sed -E
+SED = sed -n -E
 PACKAGE_NAME = maskprocessor
-VERSION_FILE = $(PACKAGE_NAME)/_version.py
+VERSION_FILE = $(PACKAGE_NAME)/__version__.py
 PACKAGE_VERSION = $(shell \
-	$(SED) "s/__version__ = [\"']([^\"']+)[\"']/\1/" $(VERSION_FILE))
+	$(SED) "s/__version__ = [\"']([^\"']+)[\"']/\1/p" $(VERSION_FILE))
 DIST_DIR = dist
 DIST_FILES = $(wildcard $(DIST_DIR)/$(PACKAGE_NAME)-$(PACKAGE_VERSION)*)
 
