@@ -16,6 +16,11 @@ pip install maskprocessor
 Usage
 -----
 
+Print help
+```sh
+maskprocessor --help  # or -h
+```
+
 Via command line
 ```sh
 $ maskprocessor '?d'
@@ -34,13 +39,12 @@ $ maskprocessor '?d'
 Import as python module
 
 ```python
-from maskprocessor import maskprocessor as maskproc
-
-
-g = maskproc('?l')
-
-print(next(g))  # a
-print(next(g))  # b
+>>> from maskprocessor import maskprocessor as maskproc
+>>> g = maskproc('?l')
+>>> print(next(g))
+a
+>>> print(next(g))
+b
 ```
 
 
